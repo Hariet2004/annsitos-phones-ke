@@ -470,6 +470,9 @@ main { flex: 1; }
 .ft-links a:hover { color: #fff; }
 .ft-right { text-align: right; display: flex; flex-direction: column; gap: 2px; }
 .ft-copy { font-size: .72rem; color: rgba(255,255,255,.25); white-space: nowrap; }
+.ft-built { font-size: .68rem; color: rgba(255,255,255,.25); }
+.ft-built a { color: var(--accent); font-weight: 600; transition: opacity .18s; }
+.ft-built a:hover { opacity: .75; }
 @media (max-width: 640px) {
   .ft-inner { flex-direction: column; text-align: center; gap: 12px; }
   .ft-links { gap: 14px; }

@@ -24,6 +24,9 @@ export default function Footer() {
         </div>
         <div className="ft-right">
           <span className="ft-copy">© {year} Annsito&apos;s Phones KE · Kimathi St, Nairobi CBD</span>
+          <span className="ft-built">
+            Built by <a href="https://hariet-wambui-portfolio.vercel.app/" target="_blank" rel="noreferrer">HK Web Studios</a>
+          </span>
         </div>
       </div>
     </footer>
