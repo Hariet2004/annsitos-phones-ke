@@ -1,7 +1,9 @@
 import { MessageCircle, Phone } from 'lucide-react'
 import { phones } from '../data/phones'
 
-const heroPhones = phones.slice(0, 4)
+const heroPhones = ['Apple iPhone 16 Pro Max 256GB', 'Samsung Galaxy S25 Ultra 256GB', 'Samsung Galaxy S24 Ultra 256GB', 'Apple iPhone 14 Pro Max 256GB']
+  .map(name => phones.find(p => p.name === name))
+  .filter(Boolean)
 
 const stats = [
   ['500+', 'Happy Customers'],

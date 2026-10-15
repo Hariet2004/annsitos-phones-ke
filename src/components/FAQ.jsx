@@ -18,7 +18,7 @@ export default function FAQ() {
       <div className="sec-head center">
         <span className="eyebrow">Good to know</span>
         <h2 className="sec-title">Questions &amp; Answers</h2>
-        <p className="sec-sub" style={{ marginBottom: 48 }}>Everything you need before ordering.</p>
+        <p className="sec-sub">Everything you need before ordering.</p>
       </div>
       <div className="faq-list">
         {faqs.map((faq, i) => (

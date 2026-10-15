@@ -1,6 +1,7 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { MessageCircle } from 'lucide-react'
 import { phones } from '../data/phones'
+import { FILTER_EVENT } from '../lib/catalogFilter'
 
 const badgeType = {
   'bg-teal-600': 'teal',
@@ -21,14 +22,33 @@ const nf = new Intl.NumberFormat('en-KE')
 export default function Phones() {
   const [tab, setTab] = useState('All Phones')
   const [sort, setSort] = useState('featured')
+  const [query, setQuery] = useState('')
+
+  useEffect(() => {
+    function onFilter(e) {
+      const { brand, query } = e.detail || {}
+      setTab(brand && phones.some(p => p.brand === brand) ? brand : 'All Phones')
+      setQuery(query || '')
+    }
+    window.addEventListener(FILTER_EVENT, onFilter)
+    return () => window.removeEventListener(FILTER_EVENT, onFilter)
+  }, [])
 
   const list = useMemo(() => {
     let items = tab === 'All Phones' ? phones : phones.filter(p => p.brand === tab)
+    if (query) {
+      const q = query.toLowerCase()
+      items = items.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        p.brand.toLowerCase().includes(q) ||
+        (p.badge || '').toLowerCase().includes(q)
+      )
+    }
     if (sort === 'low') items = [...items].sort((a, b) => a.cashPrice - b.cashPrice)
     if (sort === 'high') items = [...items].sort((a, b) => b.cashPrice - a.cashPrice)
     if (sort === 'name') items = [...items].sort((a, b) => a.name.localeCompare(b.name))
     return items
-  }, [tab, sort])
+  }, [tab, sort, query])
 
   return (
     <section id="phones" className="sec">
@@ -47,7 +67,11 @@ export default function Phones() {
       </div>
 
       <div className="cat-toolbar">
-        <span className="cat-count">{list.length} {list.length === 1 ? 'phone' : 'phones'} available</span>
+        <span className="cat-count">
+          {list.length} {list.length === 1 ? 'phone' : 'phones'} available
+          {query && <span className="cat-active"> · matching &ldquo;{query}&rdquo;</span>}
+        </span>
+        {query && <button className="cat-clear" onClick={() => setQuery('')}>Clear search</button>}
         <div className="cat-sortwrap">
           <span className="cat-sortlabel">Sort by</span>
           <select className="cat-sort" value={sort} onChange={e => setSort(e.target.value)}>
