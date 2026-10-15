@@ -3,7 +3,7 @@ import { setCatalogFilter } from '../lib/catalogFilter'
 const cards = [
   {
     title: 'Smartphones',
-    image: '/phones/samsung-s25-ultra.png',
+    image: '/phones/samsung-s25-ultra.webp',
     alt: 'Samsung Galaxy S25 Ultra',
     links: [
       ['Samsung Phones', { brand: 'Samsung', query: '' }],
@@ -14,7 +14,7 @@ const cards = [
   },
   {
     title: 'Samsung Galaxy',
-    image: '/phones/samsung-s24-ultra.png',
+    image: '/phones/samsung-s24-ultra.webp',
     alt: 'Samsung Galaxy S24 Ultra',
     links: [
       ['Galaxy S Series', { brand: 'Samsung', query: 'galaxy s' }],
@@ -25,7 +25,7 @@ const cards = [
   },
   {
     title: 'iPhone',
-    image: '/phones/iphone-16-pro-max.png',
+    image: '/phones/iphone-16-pro-max.webp',
     alt: 'Apple iPhone 16 Pro Max',
     links: [
       ['iPhone Pro Max', { brand: 'Apple', query: 'pro max' }],
@@ -36,7 +36,7 @@ const cards = [
   },
   {
     title: 'Motorola',
-    image: '/phones/moto-g-stylus.png',
+    image: '/phones/moto-g-stylus.webp',
     alt: 'Moto G Stylus',
     links: [
       ['Moto G Power', { brand: 'Motorola', query: 'g power' }],
@@ -47,7 +47,7 @@ const cards = [
   },
   {
     title: 'Popular Picks',
-    image: '/phones/samsung-s21-fe.png',
+    image: '/phones/samsung-s21-fe.webp',
     alt: 'Samsung Galaxy S21 FE 5G',
     links: [
       ['Most Wanted', { brand: null, query: 'popular' }],
@@ -58,7 +58,7 @@ const cards = [
   },
   {
     title: 'Ultra Series',
-    image: '/phones/samsung-s23-ultra.png',
+    image: '/phones/samsung-s23-ultra.webp',
     alt: 'Samsung Galaxy S23 Ultra',
     links: [
       ['Galaxy S25 Ultra', { brand: 'Samsung', query: 's25 ultra' }],

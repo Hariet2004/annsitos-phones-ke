@@ -39,7 +39,7 @@ export default function PhoneForm({ phone, onSave, onCancel }) {
       id: phone?.id ?? Date.now(),
       name: form.name.trim(),
       brand: form.brand,
-      image: form.image.trim() || '/phones/samsung-s25-ultra.png',
+      image: form.image.trim() || '/phones/samsung-s25-ultra.webp',
       cashPrice: Number(form.cashPrice),
       storage: form.storage,
       ram: form.ram,
@@ -117,8 +117,8 @@ export default function PhoneForm({ phone, onSave, onCancel }) {
 
       <div>
         <label className="adm-label">Image path</label>
-        <input className="adm-input" value={form.image} onChange={set('image')} placeholder="/phones/my-phone.png" />
-        <span className="adm-hint">Place the file in public/phones/ then enter /phones/your-file.png</span>
+        <input className="adm-input" value={form.image} onChange={set('image')} placeholder="/phones/my-phone.webp" />
+        <span className="adm-hint">Place the file in public/phones/ then enter /phones/your-file.webp</span>
       </div>
 
       {error && <p className="adm-error">{error}</p>}
