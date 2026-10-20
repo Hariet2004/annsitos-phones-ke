@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { MessageCircle } from 'lucide-react'
-import { phones } from '../data/phones'
+import { phones as defaultPhones } from '../data/phones'
 import { FILTER_EVENT } from '../lib/catalogFilter'
+
+const STORAGE_KEY = 'annsitos:phones'
 
 const badgeType = {
   'bg-teal-600': 'teal',
@@ -23,6 +25,13 @@ export default function Phones() {
   const [tab, setTab] = useState('All Phones')
   const [sort, setSort] = useState('featured')
   const [query, setQuery] = useState('')
+  const [phones] = useState(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY)
+      if (raw) return JSON.parse(raw)
+    } catch {}
+    return defaultPhones
+  })
 
   useEffect(() => {
     function onFilter(e) {
@@ -32,7 +41,7 @@ export default function Phones() {
     }
     window.addEventListener(FILTER_EVENT, onFilter)
     return () => window.removeEventListener(FILTER_EVENT, onFilter)
-  }, [])
+  }, [phones])
 
   const list = useMemo(() => {
     let items = tab === 'All Phones' ? phones : phones.filter(p => p.brand === tab)
@@ -48,7 +57,7 @@ export default function Phones() {
     if (sort === 'high') items = [...items].sort((a, b) => b.cashPrice - a.cashPrice)
     if (sort === 'name') items = [...items].sort((a, b) => a.name.localeCompare(b.name))
     return items
-  }, [tab, sort, query])
+  }, [phones, tab, sort, query])
 
   return (
     <section id="phones" className="sec">

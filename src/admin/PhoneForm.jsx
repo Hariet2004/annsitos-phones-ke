@@ -26,6 +26,8 @@ export default function PhoneForm({ phone, onSave, onCancel }) {
   })
   const [error, setError] = useState('')
 
+  const [imageFile, setImageFile] = useState(null)
+
   const set = (key) => (e) => setForm(f => ({ ...f, [key]: e.target.value }))
 
   const submit = (e) => {
@@ -52,6 +54,15 @@ export default function PhoneForm({ phone, onSave, onCancel }) {
         { name: 'MoStandard', weeklyRate: Math.round(weekly * 0.85), duration: '12 months', deposit: Math.round(deposit * 0.55) },
       ],
     })
+  }
+
+  const handleImage = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+    setImageFile(file)
+    const reader = new FileReader()
+    reader.onload = () => setForm(f => ({ ...f, image: reader.result }))
+    reader.readAsDataURL(file)
   }
 
   return (
@@ -116,9 +127,13 @@ export default function PhoneForm({ phone, onSave, onCancel }) {
       </div>
 
       <div>
-        <label className="adm-label">Image path</label>
-        <input className="adm-input" value={form.image} onChange={set('image')} placeholder="/phones/my-phone.webp" />
-        <span className="adm-hint">Place the file in public/phones/ then enter /phones/your-file.webp</span>
+        <label className="adm-label">Phone photo</label>
+        <input className="adm-input" type="file" accept="image/*" onChange={handleImage} />
+        {form.image && form.image.startsWith('data:') && (
+          <img src={form.image} alt="preview" style={{ marginTop: 10, width: 120, height: 120, objectFit: 'cover', borderRadius: 12, border: '1.5px solid var(--border)' }} />
+        )}
+        {imageFile && <span className="adm-hint">{imageFile.name}</span>}
+        <span className="adm-hint">Upload a photo — it will be saved with the phone.</span>
       </div>
 
       {error && <p className="adm-error">{error}</p>}

@@ -6,7 +6,7 @@ import PhoneForm from './PhoneForm'
 
 const STORAGE_KEY = 'annsitos:phones'
 const AUTH_KEY = 'annsitos:admin'
-const PASSCODE = 'annsito2024'
+const PASSCODE = '123'
 
 const tabs = ['All Phones', 'Apple', 'Samsung', 'Motorola']
 const nf = new Intl.NumberFormat('en-KE')
@@ -262,17 +262,30 @@ function AdminLogin({ onLogin, passcode }) {
 
   return (
     <div className="adm-login">
-      <div className="adm-logincard">
-        <span className="adm-loginlogo">Annsito<em>&apos;s</em> Admin</span>
-        <h1 className="adm-logintitle">Welcome back</h1>
-        <p className="adm-loginsub">Enter your passcode to manage the catalog.</p>
-        <form onSubmit={submit}>
-          <label className="adm-label" htmlFor="code">Passcode</label>
-          <input id="code" className="adm-input" type="password" value={value} onChange={e => setValue(e.target.value)} placeholder="••••••••" autoFocus />
-          {error && <p className="adm-error">{error}</p>}
-          <button className="adm-submit" type="submit">Sign in</button>
-        </form>
-        <p className="adm-loginnote">Local tool only. Not real security, do not share the passcode.</p>
+      <div className="adm-loginleft">
+        <span className="adm-loginlogo">Annsito<em>&apos;s</em> Phones</span>
+        <h1 className="adm-logintitle">Your phone store,<br />beautifully managed.</h1>
+        <p className="adm-loginsub">Update listings, mark phones as sold, and keep your Nairobi phone shop looking fresh from one simple dashboard.</p>
+        <div className="adm-loginfeatures">
+          <div className="adm-loginchip"><strong>Nairobi Based</strong><span>Pickup and delivery</span></div>
+          <div className="adm-loginchip"><strong>M-Pesa</strong><span>Pay fast the Kenyan way</span></div>
+          <div className="adm-loginchip"><strong>Quality Checked</strong><span>Every piece, by hand</span></div>
+          <div className="adm-loginchip"><strong>Instagram</strong><span>Latest drops and DMs</span></div>
+        </div>
+        <p className="adm-loginnote">© 2026 Annsito&apos;s Phones KE</p>
+      </div>
+      <div className="adm-loginright">
+        <div className="adm-logincard">
+          <h1 className="adm-logintitle">Welcome back</h1>
+          <p className="adm-loginsub">Enter your passcode to manage the catalog.</p>
+          <form onSubmit={submit}>
+            <label className="adm-label" htmlFor="code">Passcode</label>
+            <input id="code" className="adm-input" type="password" value={value} onChange={e => setValue(e.target.value)} placeholder="••••••••" autoFocus />
+            {error && <p className="adm-error">{error}</p>}
+            <button className="adm-submit" type="submit">Sign in</button>
+          </form>
+          <p className="adm-loginnote">Local tool only. Not real security, do not share the passcode.</p>
+        </div>
       </div>
     </div>
   )
