@@ -27,7 +27,6 @@ export default function Footer() {
           <span className="ft-built">
             Built by <a href="https://hariet-wambui-portfolio.vercel.app/" target="_blank" rel="noreferrer">HK Web Studios</a>
           </span>
-          <a className="ft-admin" href="/admin">Admin</a>
         </div>
       </div>
     </footer>
